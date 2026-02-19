@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laith Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Laith Portfolio | Mobile Optimized</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- MOVING LIGHT DIVS (instead of gradient background) -->
+    <!-- MOVING LIGHT DIVS -->
     <div class="moving-light"></div>
     <div class="moving-light-secondary"></div>
 
-    <!-- Header (unchanged) -->
+    <!-- Header -->
     <header class="resume-header" id="resumeH"></header>
     <div class="header-buttons" id="headerButtons">
         <button class="header-button" onclick="scrollToSection('profile')">Home</button>
@@ -21,11 +21,11 @@
         <button class="header-button" onclick="window.open('#', '_blank')">Projects</button>
     </div>
 
-    <!-- Background layers (scanlines, eagle-vision remain, but gradient-bg removed) -->
+    <!-- Background layers -->
     <div class="scanlines"></div>
     <div class="eagle-vision"></div>
 
-    <!-- Rhombuses -->
+    <!-- Rhombuses (keeping all but they'll be hidden on mobile via CSS) -->
     <div class="rhombus-container" id="rhombusContainer">
         <div class="long-rhombus rhombus-sharp-1 rhombus-1"></div>
         <div class="long-rhombus rhombus-sharp-3 rhombus-2"></div>
@@ -52,76 +52,111 @@
     <!-- Main content -->
     <div class="content">
         <div class="assassin-card">
-            <!-- border elements -->
+            <!-- border elements (simplified for mobile) -->
             <div class="corner corner-tl"></div>
             <div class="corner corner-tr"></div>
             <div class="corner corner-bl"></div>
             <div class="corner corner-br"></div>
-            <div class="blade-mark blade-1"></div>
-            <div class="blade-mark blade-2"></div>
-            <div class="codex-page codex-1"></div>
-            <div class="codex-page codex-2"></div>
             <div class="pattern-overlay"></div>
             
             <!-- Content -->
-            <div class="insignia"></div>
             <h1>Laith Haj Hosin</h1>
-            <div class="subtitle">Web Devoloper • AI specialist</div>
+            <div class="subtitle">Web Developer • AI Specialist</div>
             
             <div id="profile" class="resume-section">
-                <div class="section-title"><span></span>Portfolio</div>
-                <p style="line-height: 1.6; color: #ffffff;">Information Technology Engineering student specializing in Software Engineering at Syrian Virtual University. Passionate about web development and artificial intelligence, with strong problem-solving skills and a dedication to helping others succeed. Experienced in customer service and student support, combining technical knowledge with excellent communication abilities.</p>
+                <div class="section-title">📋 About Me</div>
+                <p>Information Technology Engineering student specializing in Software Engineering at Syrian Virtual University. Passionate about web development and artificial intelligence, with strong problem-solving skills and a dedication to helping others succeed.</p>
             </div>
 
             <div id="skills" class="resume-section">
-                <div class="section-title"><span></span> SKILLS & Expertise</div>
+                <div class="section-title">⚡ Skills</div>
                 <div class="skill-tags">
                     <span class="skill-tag">C# (Excellent)</span>
-                    <span class="skill-tag">C++ (Good)</span>
                     <span class="skill-tag">Python (Very Good)</span>
+                    <span class="skill-tag">C++ (Good)</span>
                     <span class="skill-tag">MySQL (Good)</span>
-                    <span class="skill-tag">Eagle Vision</span>
-                    <span class="skill-tag">Leadership</span>
-                    <span class="skill-tag">Renaissance Politics</span>
-                    <span class="skill-tag">Multi-lingual</span>
+                    <span class="skill-tag">Oracle DB</span>
+                    <span class="skill-tag">MS Office</span>
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Teamwork</span>
+                    <span class="skill-tag">Customer Service</span>
                 </div>
             </div>
 
             <div id="experience" class="resume-section">
-                <div class="section-title"><span></span>WORk EXPERIENCES</div>
+                <div class="section-title">💼 Experience</div>
                 <div class="timeline-item">
-                    <div class="timeline-year">[12/6/2021]</div>
-                    <div class="timeline-content"><h3>Retail Assistant. <p> Automotive Shop, Salamiyah <br> · Processing payments and managing transactions <br> · Offering assistance and selling products to customers <br> · Ordering stock and arranging products on display shelves</p>
+                    <div class="timeline-year">2022 - 2023</div>
+                    <div class="timeline-content">
+                        <h3>Retail Assistant</h3>
+                        <p>Automotive Shop, Salamiyah</p>
+                        <p>• Processing payments<br>• Customer assistance and sales<br>• Stock management</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2023 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Student Support</h3>
+                        <p>Syrian Virtual University</p>
+                        <p>• Helping freshmen with studies<br>• Organizing virtual meetings<br>• Academic guidance</p>
                     </div>
                 </div>
             </div>
 
             <div class="education">
-                <div class="section-title"><span></span> EDUCATION</div>
+                <div class="section-title">🎓 Education</div>
                 <div class="education-box">
-                    <div class="degree-title"> 🎓Bachelor degree in Information Technology Engineering (ITE).</div> 
-                    <div class="degree-details">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at Syrian Virtual University <span style="margin: 0 10px;">&nbsp;</span> Study Field: Software Engineering</div>
+                    <div class="degree-title">Bachelor in IT Engineering</div> 
+                    <div class="degree-details">Syrian Virtual University · 2022 - Present<br>Software Engineering</div>
                 </div>
                 <div class="education-box">
-                    <div class="degree-title">🎓High School Degree.</div> 
-                    <div class="degree-details">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ali Ben Abi Talib High School, Salamiyah <span style="margin: 0 10px;">&nbsp;</span> Scientific Field <span style="margin: 0 10px;">&nbsp;</span>  Final Grade: 81%</div>
+                    <div class="degree-title">High School Degree</div> 
+                    <div class="degree-details">Ali Ben Abi Talib High School · 2021<br>Scientific Field · 81%</div>
                 </div>
+            </div>
 
+            <div class="education">
+                <div class="section-title">🗣️ Languages</div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Arabic (Native)</span>
+                    <span class="skill-tag">English (Advanced)</span>
+                    <span class="skill-tag">German (intermediate)</span>
+                </div>
             </div>
+
             <div id="contact" class="contact-row">
-                <div class="contact-item" onclick="copyToClipboard('ezio.auditore@assassins.com')"><span class="contact-icon">📧</span><span class="contact-text">laithhajhosin03@gmail.com</span></div>
-                <div class="contact-item" onclick="copyToClipboard('+39 055 123456')"><span class="contact-icon">📱</span><span class="contact-text">+963-935-972100</span></div>
-                <div class="contact-item" onclick="copyToClipboard('@ezio_auditore')"><span class="contact-icon">💬</span><span class="contact-text">@laithho</span></div>
+                <div class="contact-item" onclick="copyToClipboard('laithhajhosin03@gmail.com')">
+                    <span>📧</span>
+                    <span class="contact-text">laithhajhosin03@gmail.com</span>
+                </div>
+                <div class="contact-item" onclick="copyToClipboard('+963935972100')">
+                    <span>📱</span>
+                    <span class="contact-text">+963-935-972100</span>
+                </div>
+                <div class="contact-item" onclick="copyToClipboard('@laithho')">
+                    <span>💬</span>
+                    <span class="contact-text">@laithho</span>
+                </div>
             </div>
+            
             <div class="pdf_button_downloader">
-                <button class="btn-download" onclick="downloadPDF(this)"><span>⬇️</span><span>DOWNLOAD CV (PDF)</span></button>
+                <button class="btn-download" onclick="downloadPDF(this)">
+                    <span>⬇️</span>
+                    <span>DOWNLOAD CV (PDF)</span>
+                </button>
             </div>
         </div>
     </div>
 
-    <footer class="resume-footer"><span></span></footer>
+    <footer class="resume-footer">
+        <span>© 2026 Laith Haj Hosin</span>
+    </footer>
+    
     <div class="copy-toast" id="copyToast"></div>
 
-    <script src="style.js"> </script>
+    <script src="style.js">
+        
+    </script>
 </body>
 </html>
