@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ezio Auditore · moving light</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- MOVING LIGHT DIVS (instead of gradient background) -->
+    <div class="moving-light"></div>
+    <div class="moving-light-secondary"></div>
+
+    <!-- Header (unchanged) -->
+    <header class="resume-header" id="resumeH"></header>
+    <div class="header-buttons" id="headerButtons">
+        <button class="header-button" onclick="scrollToSection('profile')">Home</button>
+        <button class="header-button" onclick="scrollToSection('skills')">Portfolio</button>
+        <button class="header-button" onclick="scrollToSection('experience')">EXPERIENCE</button>
+        <button class="header-button" onclick="scrollToSection('contact')">CONTACTs</button>
+        <button class="header-button" onclick="window.open('#', '_blank')">Projects</button>
+    </div>
+
+    <!-- Background layers (scanlines, eagle-vision remain, but gradient-bg removed) -->
+    <div class="scanlines"></div>
+    <div class="eagle-vision"></div>
+
+    <!-- Rhombuses -->
+    <div class="rhombus-container" id="rhombusContainer">
+        <div class="long-rhombus rhombus-sharp-1 rhombus-1"></div>
+        <div class="long-rhombus rhombus-sharp-3 rhombus-2"></div>
+        <div class="long-rhombus rhombus-sharp-5 rhombus-3"></div>
+        <div class="long-rhombus rhombus-sharp-2 rhombus-4"></div>
+        <div class="long-rhombus rhombus-sharp-4 rhombus-5"></div>
+        <div class="long-rhombus rhombus-sharp-6 rhombus-6"></div>
+        <div class="long-rhombus rhombus-sharp-7 rhombus-7"></div>
+        <div class="long-rhombus rhombus-sharp-8 rhombus-8"></div>
+        <div class="long-rhombus rhombus-sharp-9 rhombus-9"></div>
+        <div class="long-rhombus rhombus-sharp-10 rhombus-10"></div>
+        <div class="long-rhombus rhombus-sharp-2 rhombus-11"></div>
+        <div class="long-rhombus rhombus-sharp-4 rhombus-12"></div>
+        <div class="long-rhombus rhombus-sharp-1 rhombus-13"></div>
+        <div class="long-rhombus rhombus-sharp-3 rhombus-14"></div>
+        <div class="long-rhombus rhombus-sharp-5 rhombus-15"></div>
+        <div class="long-rhombus rhombus-sharp-6 rhombus-16"></div>
+        <div class="long-rhombus rhombus-sharp-7 rhombus-17"></div>
+        <div class="long-rhombus rhombus-sharp-8 rhombus-18"></div>
+        <div class="long-rhombus rhombus-sharp-9 rhombus-19"></div>
+        <div class="long-rhombus rhombus-sharp-10 rhombus-20"></div>
+    </div>
+    
+    <!-- Main content -->
+    <div class="content">
+        <div class="assassin-card">
+            <!-- border elements -->
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-tr"></div>
+            <div class="corner corner-bl"></div>
+            <div class="corner corner-br"></div>
+            <div class="blade-mark blade-1"></div>
+            <div class="blade-mark blade-2"></div>
+            <div class="codex-page codex-1"></div>
+            <div class="codex-page codex-2"></div>
+            <div class="pattern-overlay"></div>
+            
+            <!-- Content -->
+            <div class="insignia"></div>
+            <h1>Laith Haj Hosin</h1>
+            <div class="subtitle">Web Devoloper • AI specialist</div>
+            
+            <div id="profile" class="resume-section">
+                <div class="section-title"><span></span>Portfolio</div>
+                <p style="line-height: 1.6; color: #ffffff;">Information Technology Engineering student specializing in Software Engineering at Syrian Virtual University. Passionate about web development and artificial intelligence, with strong problem-solving skills and a dedication to helping others succeed. Experienced in customer service and student support, combining technical knowledge with excellent communication abilities.</p>
+            </div>
+
+            <div id="skills" class="resume-section">
+                <div class="section-title"><span></span> SKILLS & Expertise</div>
+                <div class="skill-tags">
+                    <span class="skill-tag">C# (Excellent)</span>
+                    <span class="skill-tag">C++ (Good)</span>
+                    <span class="skill-tag">Python (Very Good)</span>
+                    <span class="skill-tag">MySQL (Good)</span>
+                    <span class="skill-tag">Eagle Vision</span>
+                    <span class="skill-tag">Leadership</span>
+                    <span class="skill-tag">Renaissance Politics</span>
+                    <span class="skill-tag">Multi-lingual</span>
+                </div>
+            </div>
+
+            <div id="experience" class="resume-section">
+                <div class="section-title"><span></span>WORk EXPERIENCES</div>
+                <div class="timeline-item">
+                    <div class="timeline-year">[12/6/2021]</div>
+                    <div class="timeline-content"><h3>Retail Assistant. <p> Automotive Shop, Salamiyah <br> · Processing payments and managing transactions <br> · Offering assistance and selling products to customers <br> · Ordering stock and arranging products on display shelves</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education">
+                <div class="section-title"><span></span> EDUCATION</div>
+                <div class="education-box">
+                    <div class="degree-title"> 🎓Bachelor degree in Information Technology Engineering (ITE).</div> 
+                    <div class="degree-details">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at Syrian Virtual University <span style="margin: 0 10px;">&nbsp;</span> Study Field: Software Engineering</div>
+                </div>
+                <div class="education-box">
+                    <div class="degree-title">🎓High School Degree.</div> 
+                    <div class="degree-details">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ali Ben Abi Talib High School, Salamiyah <span style="margin: 0 10px;">&nbsp;</span> Scientific Field <span style="margin: 0 10px;">&nbsp;</span>  Final Grade: 81%</div>
+                </div>
+
+            </div>
+            <div id="contact" class="contact-row">
+                <div class="contact-item" onclick="copyToClipboard('ezio.auditore@assassins.com')"><span class="contact-icon">📧</span><span class="contact-text">laithhajhosin03@gmail.com</span></div>
+                <div class="contact-item" onclick="copyToClipboard('+39 055 123456')"><span class="contact-icon">📱</span><span class="contact-text">+963-935-972100</span></div>
+                <div class="contact-item" onclick="copyToClipboard('@ezio_auditore')"><span class="contact-icon">💬</span><span class="contact-text">@laithho</span></div>
+            </div>
+            <div class="pdf_button_downloader">
+                <button class="btn-download" onclick="downloadMemory(this)"><span>⬇️</span><span>DOWNLOAD CV (PDF)</span></button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="resume-footer"><span></span></footer>
+    <div class="copy-toast" id="copyToast"></div>
+
+    <script src="style.js"> </script>
+</body>
+</html>
