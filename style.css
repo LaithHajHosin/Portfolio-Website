@@ -110,7 +110,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4%;
+    gap: 35px;
     padding: 0 10px;
     z-index: 30;
     transition: height 0.4s ease, all 0.4s ease;
@@ -120,7 +120,7 @@ body {
 
 .header-buttons.shrink {
     height: 80px;
-    gap: 5px;
+    gap: 25px;
 }
 
 .header-button {
@@ -570,7 +570,7 @@ h1 {
     }
     
     .header-buttons {
-        gap: 5px;
+        gap: 4px;
         padding: 0 5px;
         height: 100px;
     }
@@ -591,6 +591,7 @@ h1 {
     
     .header-buttons.shrink {
         height: 70px;
+        gap: 4px;
     }
     
     .assassin-card {
@@ -605,7 +606,9 @@ h1 {
         padding: 5px 10px;
         font-size: 0.8rem;
     }
-    
+    .rhombus-container{
+        display: none;
+    }
     /* Hide some rhombuses on very small screens */
     .rhombus-7, .rhombus-8, .rhombus-9, .rhombus-10,
     .rhombus-17, .rhombus-18, .rhombus-19, .rhombus-20 {
