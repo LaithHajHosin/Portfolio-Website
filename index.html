@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Laith Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <!-- MOVING LIGHT DIVS -->
@@ -14,11 +15,34 @@
     <!-- Header -->
     <header class="resume-header" id="resumeH"></header>
     <div class="header-buttons" id="headerButtons">
-        <button class="header-button" onclick="scrollToSection('profile')">Home</button>
-        <button class="header-button" onclick="scrollToSection('skills')">Portfolio</button>
-        <button class="header-button" onclick="scrollToSection('experience')">EXPERIENCE</button>
-        <button class="header-button" onclick="scrollToSection('contact')">CONTACTs</button>
-        <button class="header-button" onclick="window.open('#', '_blank')">Projects</button>
+        <button class="share-dropdown">
+            <div class="share-dropdown-btns" onclick="scrollToSection('0')">
+                <div>Home</div>  
+                 <i class="fa fa-phone iconi"></i>
+            </div>
+            <div class="share-dropdown-list">
+                <div onclick="scrollToSection('profile')">About Me</div>
+                <div onclick="scrollToSection('skills')">Skills</div>
+                <div onclick="scrollToSection('experience')">Experience</div>
+                <div onclick="scrollToSection('education')">Education</div>
+                <div onclick="scrollToSection('languages')">Languages</div>
+                <div onclick="scrollToSection('CVpdf')">CV pdf</div>
+            </div>
+        </button>
+        <button class="share-dropdown-btns" onclick="showPDFPage(this)">Portfolio</button>
+        <button class="share-dropdown-btns" onclick="scrollToSection('experience')">Specialisation</button>
+        <button class="share-dropdown">
+            <div class="share-dropdown-btns">
+                <div>Contact</div>  
+                 <i class="fa fa-phone iconi"></i>
+            </div>
+            <div class="share-dropdown-list">
+                <i class="fa fa-linkedin"></i>
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-instagram"></i>
+            </div>
+        </button>
+        <button class="share-dropdown-btns" onclick="window.open('#', '_blank')">Projects</button>
     </div>
 
     <!-- Background layers -->
@@ -68,12 +92,12 @@
             <div class="subtitle">Web Developer • AI Specialist</div>
             
             <div id="profile" class="resume-section">
-                <div class="section-title">📋 About Me</div>
+                <div class="section-title"><i class="fa fa-book"></i> About Me</div>
                 <p>Information Technology Engineering student specializing in Software Engineering at Syrian Virtual University. Passionate about web development and artificial intelligence, with strong problem-solving skills and a dedication to helping others succeed.</p>
             </div>
 
             <div id="skills" class="resume-section">
-                <div class="section-title">⚡ Skills</div>
+                <div class="section-title"><i class="fa fa-fighter-jet"></i> Skills</div>
                 <div class="skill-tags">
                     <span class="skill-tag">C# (Excellent)</span>
                     <span class="skill-tag">Python (Very Good)</span>
@@ -88,7 +112,7 @@
             </div>
 
             <div id="experience" class="resume-section">
-                <div class="section-title">💼 Experience</div>
+                <div class="section-title"><i class="fa fa-briefcase"></i> Experience</div>
                 <div class="timeline-item">
                     <div class="timeline-year">2022 - 2023</div>
                     <div class="timeline-content">
@@ -108,8 +132,8 @@
                 </div>
             </div>
 
-            <div class="education">
-                <div class="section-title">🎓 Education</div>
+            <div class="education" id="education">
+                <div class="section-title"><i class="fa fa-pencil"></i> Education</div>
                 <div class="education-box">
                     <div class="degree-title">Bachelor in IT Engineering</div> 
                     <div class="degree-details">Syrian Virtual University · 2022 - Present<br>Software Engineering</div>
@@ -120,8 +144,8 @@
                 </div>
             </div>
 
-            <div class="education">
-                <div class="section-title">🗣️ Languages</div>
+            <div class="education" id="languages">
+                <div class="section-title"><i class="fa fa-language"></i> Languages</div>
                 <div class="skill-tags">
                     <span class="skill-tag">Arabic (Native)</span>
                     <span class="skill-tag">English (Advanced)</span>
@@ -131,22 +155,22 @@
 
             <div id="contact" class="contact-row">
                 <div class="contact-item" onclick="copyToClipboard('laithhajhosin03@gmail.com')">
-                    <span>📧</span>
+                    <span><i class="fa fa-envelope-o"></i></span>
                     <span class="contact-text">laithhajhosin03@gmail.com</span>
                 </div>
                 <div class="contact-item" onclick="copyToClipboard('+963935972100')">
-                    <span>📱</span>
+                    <span><i class="fa fa-tablet"></i></span>
                     <span class="contact-text">+963-935-972100</span>
                 </div>
                 <div class="contact-item" onclick="copyToClipboard('@laithho')">
-                    <span>💬</span>
+                    <span><i class="fa fa-telegram"></i></span>
                     <span class="contact-text">@laithho</span>
                 </div>
             </div>
             
-            <div class="pdf_button_downloader">
+            <div class="pdf_button_downloader" id="CVpdf">
                 <button class="btn-download" onclick="downloadPDF(this)">
-                    <span>⬇️</span>
+                    <span><i class="fa fa-download"></i></span>
                     <span>DOWNLOAD CV (PDF)</span>
                 </button>
             </div>
