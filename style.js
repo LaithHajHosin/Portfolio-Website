@@ -90,6 +90,26 @@ function fallbackCopy(text) {
     showToast(`📋 Copied: ${text}`);
 }
 
+function showPDFPage(btn){
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span>⏳</span><span>transfering...</span>';
+    
+    setTimeout(() => {
+        // Link to your actual PDF file
+        const link = document.createElement('a');
+        link.href = '_0_resume_pdf.html'; // Your PDF file name
+        link.target = "_blank";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        btn.innerHTML = originalText;
+        showToast('✅ CV downloaded!');
+    }, 1000);
+
+
+}
+
 function showToast(message) {
     const toast = document.getElementById('copyToast');
     toast.textContent = message;
@@ -100,58 +120,26 @@ function showToast(message) {
 // Download PDF with better error handling
 function downloadPDF(btn) {
     const originalText = btn.innerHTML;
-    
-    btn.disabled = true;
     btn.innerHTML = '<span>⏳</span><span>PREPARING...</span>';
     
     setTimeout(() => {
-        btn.disabled = false;
-        btn.innerHTML = originalText;
-        
-        // Create a simple text file as fallback (since the PDF might not exist)
-        const content = `LAITH HAJ HOSIN - CV
-================================
-Date of Birth: 01.01.2003
-Location: Salamiyah, Hama, Syria
-
-EDUCATION
----------
-• Bachelor in IT Engineering (Software Engineering)
-Syrian Virtual University | 2022 - Present
-
-• High School Degree (Scientific)
-Ali Ben Abi Talib High School | 2021 | 81%
-
-SKILLS
-------
-• Programming: C# (Excellent), Python (Very Good), C++ (Good), MySQL (Good)
-• Software: Oracle DB, MS Office
-• Languages: Arabic (Native), English (Advanced)
-• Soft Skills: Problem Solving, Teamwork, Customer Service, Multitasking
-
-EXPERIENCE
-----------
-• Retail Assistant | Automotive Shop, Salamiyah | 2022-2023
-- Processing payments, customer service, stock management
-
-• Student Support | Syrian Virtual University | 2023-Present
-- Helping freshmen, organizing virtual meetings, academic guidance`;
-
-        const blob = new Blob([content], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
+        // Link to your actual PDF file
         const link = document.createElement('a');
-        link.href = url;
-        link.download = 'Laith_Haj_Hosin_CV.txt';
+        link.href = 'Laith_Haj_Hosin_CV.pdf'; // Your PDF file name
+        link.download = 'Laith_Haj_Hosin_CV.pdf'; // Name for downloaded file
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        URL.revokeObjectURL(url);
         
+        btn.innerHTML = originalText;
         showToast('✅ CV downloaded!');
     }, 1000);
 }
-
 function scrollToSection(id) {
+    if(id == '0'){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+    }
     const element = document.getElementById(id);
     if (element) {
         const yOffset = -100;
