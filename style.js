@@ -97,7 +97,7 @@ function showPDFPage(btn){
     setTimeout(() => {
         // Link to your actual PDF file
         const link = document.createElement('a');
-        link.href = '_0_resume_pdf.html'; // Your PDF file name
+        link.href = 'resume_pdf.html'; // Your PDF file name
         link.target = "_blank";
         document.body.appendChild(link);
         link.click();
