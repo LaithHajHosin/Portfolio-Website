@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="_0_project_viewer.css">
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- HEADER (deep blue/purple/black gradient) -->
+        <header class="page-header">
+            <h1 class="headline" id="headline1">PortFolio </h1>
+            <h1 class="headline" id="headline2"> Gallery</h1>
+        </header>
+
+        <!-- FILTER (with data-filter, movement on hover) -->
+        <div class="filter-switch" id="filterSwitch"><i class="fa fa-building"></i> Filter</div>
+        <div class="filter-bar active" id="filterBar">
+            <button class="filter-btn active" data-filter="all">all projects</button>
+            <button class="filter-btn" data-filter="webKit">web Kit</button>
+            <button class="filter-btn" data-filter="ui">---</button>
+            <button class="filter-btn" data-filter="3d">---</button>
+            <button class="filter-btn" data-filter="concept">---</button>
+        </div>
+
+        <!-- GALLERY - HARDCODED with category data attribute -->
+        <section class="gallery-grid" id="galleryGrid">
+            <!-- 1: web -->
+            <div class="project-card" data-category="webKit">
+                <div class="card-background">
+                </div>
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="cropedA.jpg" alt="">
+                    </div>
+                    <div class="card-tags">
+                        <span class="card-category">web app</span>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-title">
+                            <h3 >neon dash</h3>
+                        </div>
+                        <div class="description">
+                            <div class="paragraph">
+                                <p>Analytics dashboard, indigo & violet gradients. realtime data, dark mode ultra.</p>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="project-footer">
+                        <span class="badge">Visit Project <i class="fa fa-external-link"></i></span>
+                        <span>⚡ 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+
+        </section>
+
+        <!-- FOOTER (with movement) -->
+        <footer class="page-footer">
+            <div class="copyright">
+                © 2025 · blue & purple studio
+            </div>
+            <div class="footer-links">
+                <a href="#">github</a>
+                <a href="#">behance</a>
+                <a href="#">instagram</a>
+                <a href="#">contact</a>
+            </div>
+            <div style="color:#5145a3; font-size:0.85rem; transition: inherit;">
+                #darktheme
+            </div>
+        </footer>
+    </div>
+
+    <!-- MINIMAL FILTER SCRIPT (only toggles classes / hide) -->
+    <script src="_0_project_viewer.js">
+       
+    </script>
+    <!-- tiny style for hidden cards consistency -->
+</body>
+</html>
