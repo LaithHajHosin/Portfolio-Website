@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign in · interactive pixel border</title>
+    <link rel="stylesheet" href="project1.css">
+</head>
+<body>
+    <!-- <div class="interact-hint"><span>🖱️ move mouse</span> to warp the pixel border · always interactive</div>
+    <button class="reset-mini" id="resetBorderBtn">⟲ reset wave</button> -->
+
+    <div class="auth-container">
+        <canvas id="borderCanvas"></canvas>
+        <div class="auth-content">
+            <h2>sign in</h2>
+            
+            <!-- sign in form -->
+            <div class="input-group">
+                <label>email</label>
+                <input type="email" placeholder="your@email.com" value="demo@user.com">
+            </div>
+            <div class="input-group">
+                <label>password</label>
+                <input type="password" placeholder="••••••••" value="password">
+            </div>
+
+            <div class="flex-row">
+                <label class="checkbox-label">
+                    <input type="checkbox" checked> remember me
+                </label>
+                <a href="#" class="forgot-link">forgot?</a>
+            </div>
+
+            <button class="auth-btn">sign in →</button>
+
+            <div class="switch-text" style="text-align: center; margin-top: 26px; color: #a3b6e0;">
+                don't have an account? <a href="#" style="color: #ccdcff; text-decoration: none; font-weight: 600; border-bottom: 2px solid #6f8eff;">sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="project1.js">
+    </script>
+</body>
+</html>
