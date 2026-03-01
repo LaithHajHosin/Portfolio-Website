@@ -286,6 +286,7 @@ body {
     border: 1px solid #5a47b0;
     font-weight: 500;
     transition: background 0.2s;
+    curson: pointer;
 }
 
 .project-card:hover .badge {
