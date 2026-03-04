@@ -12,10 +12,10 @@
     
     resizeCanvas();
     
-    window.addEventListener('resize', () => {
-        resizeCanvas();
-        if (waveBorder) waveBorder.resize(canvas.width, canvas.height);
-    });
+    // window.addEventListener('resize', () => {
+    //     resizeCanvas();
+    //     if (waveBorder) waveBorder.resize(canvas.width, canvas.height);
+    // });
 
     // ========== ALWAYS-ACTIVE MOUSE ==========
     const mouse = {
