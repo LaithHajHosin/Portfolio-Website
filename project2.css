@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #030011;
+    min-height: 200vh;           /* scrollable */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+#sparkCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 200vh;
+    height: auto;
+    display: block;
+    background: #0b0822;
+    z-index: 0;
+    pointer-events: auto;
+}
+/* optional tiny marker (can be deleted) */
+.scroll-marker {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(200, 180, 255, 0.2);
+    font-size: 13px;
+    z-index: 100;
+    pointer-events: none;
+    font-family: monospace;
+}
