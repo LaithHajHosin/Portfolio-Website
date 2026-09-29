@@ -790,13 +790,6 @@
     }
 }
 
-/* Mobile layout order fix */
-@media (max-width: 768px) {
-    .hero2 {
-        display: flex !important;
-        flex-direction: column-reverse !important;
-    }
-}
 
 /* --- Interactive Contact Form Border --- */
 #contact-form {
