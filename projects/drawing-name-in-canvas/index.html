@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generative Canvas — Letter Drawer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <div class="gc-header">
+    <span class="eyebrow">Creative Coding</span>
+    <h1>Generative Canvas</h1>
+    <div class="bar"></div>
+    <p>Type a word below and watch it draw itself stroke by stroke using pure JavaScript and HTML5 Canvas.</p>
+  </div>
+
+  <div class="gc-panel">
+    <div class="gc-canvas-wrap">
+      <canvas id="artCanvas" aria-label="Generative letter drawing canvas"></canvas>
+      <div class="gc-controls">
+        <input
+          type="text"
+          id="wordInput"
+          class="gc-input"
+          placeholder="Type a word..."
+          value="LAITH"
+          maxlength="12"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button id="artBtnDraw" class="gc-btn" type="button">Draw</button>
+        <button id="artBtnClear" class="gc-btn" type="button">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="gc-footnote">Uppercase A–Z supported · Enter to draw · Click Clear to wipe</div>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>

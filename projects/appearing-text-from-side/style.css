@@ -1,0 +1,140 @@
+:root {
+      --papaya: #ff8000;
+      --bg: #050505;
+      --cycle: 5s; /* total animation speed */
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 50% 40%, #1a1a1a 0%, var(--bg) 65%);
+      overflow: hidden;
+    }
+
+    .lando-loader {
+      position: relative;
+      display: inline-block;
+      padding: 0.08em 0.12em;
+      isolation: isolate;
+      filter: drop-shadow(0 0 22px rgba(255, 128, 0, 0.35));
+    }
+
+    .lando-loader__text {
+      display: inline-block;
+      font-family: "Arial Black", "Helvetica Neue", Impact, sans-serif;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.06em;
+      line-height: 0.85;
+      font-size: clamp(3rem, 14vw, 10rem);
+
+      background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #ffd7a8 42%,
+        var(--papaya) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+
+      clip-path: inset(0 100% 0 0);
+      animation: wipeInOut var(--cycle) cubic-bezier(0.77, 0, 0.18, 1) infinite;
+      will-change: clip-path;
+    }
+
+    /* The glowing loading line */
+    .lando-loader::before {
+      content: "";
+      position: absolute;
+      top: -0.12em;
+      bottom: -0.12em;
+      left: 0;
+      width: 0.045em;
+      min-width: 2px;
+      background: var(--papaya);
+      border-radius: 999px;
+      box-shadow:
+        0 0 10px var(--papaya),
+        0 0 28px rgba(255, 128, 0, 0.9),
+        0 0 60px rgba(255, 128, 0, 0.5);
+      opacity: 0;
+      animation: lineSweep var(--cycle) cubic-bezier(0.77, 0, 0.18, 1) infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes wipeInOut {
+      0% {
+        clip-path: inset(0 100% 0 0);
+      }
+      20% {
+        clip-path: inset(0 0 0 0);
+      }
+      55% {
+        clip-path: inset(0 0 0 0);
+      }
+      75% {
+        clip-path: inset(0 0 0 100%);
+      }
+      100% {
+        clip-path: inset(0 0 0 100%);
+      }
+    }
+
+    @keyframes lineSweep {
+      0% {
+        left: 0%;
+        opacity: 0;
+      }
+      2% {
+        opacity: 1;
+      }
+      18% {
+        left: 100%;
+        opacity: 1;
+      }
+      20% {
+        left: 100%;
+        opacity: 0;
+      }
+      55% {
+        left: 0%;
+        opacity: 0;
+      }
+      57% {
+        left: 0%;
+        opacity: 1;
+      }
+      73% {
+        left: 100%;
+        opacity: 1;
+      }
+      75% {
+        left: 100%;
+        opacity: 0;
+      }
+      100% {
+        left: 0%;
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lando-loader__text {
+        animation: none;
+        clip-path: none;
+      }
+
+      .lando-loader::before {
+        display: none;
+      }
+    }

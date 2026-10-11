@@ -1,0 +1,226 @@
+:root {
+            --color-dark-green: #0a1b14;
+            --color-lime: #d2ff00;
+            --color-lime-off: #bcf300;
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --color-text-muted: rgba(255, 255, 255, 0.65);
+            --color-card-border: rgba(210, 255, 0, 0.2);
+            --cubic-default: cubic-bezier(0.65, 0.05, 0, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--color-dark-green);
+            color: var(--color-white);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        /* =========================================
+           SECTION CONTAINER
+           ========================================= */
+        .s.is-callout-socials {
+            padding: 6rem 0;
+            position: relative;
+            width: 100%;
+            background-color: var(--color-dark-green);
+            overflow: hidden;
+        }
+
+        .c.is-callout-socials {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .callout-socials-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .callout-socials-layout {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Top Icon */
+        .callout-socials-rive-w {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1.5rem;
+            color: var(--color-lime);
+        }
+
+        /* =========================================
+           HEADER & TYPOGRAPHY
+           ========================================= */
+        .text-title-lg-mona {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            margin-bottom: 3.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem 1.25rem;
+        }
+
+        .span-font-brier {
+            color: var(--color-lime);
+            font-style: italic;
+            font-weight: 800;
+        }
+
+        /* =========================================
+           OVAL 3D CURVED CAROUSEL
+           ========================================= */
+        .carousel-viewport {
+            width: 100vw;
+            height: 580px;
+            position: relative;
+            perspective: 1200px;
+            perspective-origin: 50% 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+            touch-action: pan-y;
+        }
+
+        .carousel-viewport:active {
+            cursor: grabbing;
+        }
+
+        .callout-socials-card-layout {
+            position: relative;
+            width: 320px;
+            height: 480px;
+            transform-style: preserve-3d;
+        }
+
+        /* Individual Card */
+        .callout-socials-card-w {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 320px;
+            height: 480px;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #111;
+            transform-style: preserve-3d;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            will-change: transform, opacity, filter;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .callout-socials-card-w:hover {
+            border-color: var(--color-lime);
+            box-shadow: 0 25px 60px rgba(210, 255, 0, 0.25);
+        }
+
+        /* Media / Video Stream wrapper */
+        .video-stream {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .image.is-social-card {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+            transition: transform 0.6s var(--cubic-default), filter 0.4s ease;
+            transform: scale(1.02);
+        }
+
+        .callout-socials-card-w:hover .image.is-social-card {
+            transform: scale(1.12);
+        }
+
+        /* Subtle Glow / Vignette inside Card */
+        .callout-socials-card-w::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(10,27,20,0.8) 100%);
+            pointer-events: none;
+        }
+
+        /* =========================================
+           CALLOUT FOOTER & SOCIAL PILLS
+           ========================================= */
+        .callout-socials-intro-w {
+            margin-top: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .text-cta-short-intro {
+            font-size: 1.15rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.02em;
+            font-weight: 500;
+        }
+
+        .callout-socials-links-layout {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem 1.25rem;
+        }
+
+        .text-link-w {
+            text-decoration: none;
+            color: var(--color-white);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            padding: 0.7rem 1.6rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .text-link-w:hover {
+            background-color: var(--color-lime);
+            color: var(--color-black);
+            border-color: var(--color-lime);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(210, 255, 0, 0.25);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-viewport {
+                height: 480px;
+            }
+            .callout-socials-card-layout,
+            .callout-socials-card-w {
+                width: 250px;
+                height: 380px;
+            }
+        }

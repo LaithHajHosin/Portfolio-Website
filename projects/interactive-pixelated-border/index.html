@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Pixel Border</title>
+  
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- Card with the interactive pixel border -->
+  <div class="pixel-card-wrapper" id="pixelCard">
+    <canvas class="pixel-canvas" id="pixelCanvas"></canvas>
+
+    <div class="card-content">
+      <span class="tag">Canvas Shader</span>
+      <h2>Interactive Pixel Border</h2>
+      <p>
+        Move your cursor across the edges of this card. The border pixels light up based on proximity distance and fade away smoothly.
+      </p>
+      <button class="btn">Explore System</button>
+    </div>
+  </div>
+
+  <div class="instruction">
+    Hover around the border edges to ignite real-time pixelation
+  </div>
+
+  
+    <script src="./script.js"></script>
+</body>
+</html>

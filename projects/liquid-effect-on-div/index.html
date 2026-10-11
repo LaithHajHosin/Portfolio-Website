@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lando Norris — Liquid</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- ============ SVG FILTER DEFS ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- gooey metaball merge -->
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 24 -10" result="goo"/>
+      <feBlend in="SourceGraphic" in2="goo"/>
+    </filter>
+
+    <!-- liquid distortion for the title -->
+    <filter id="liquid" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence id="turb" type="fractalNoise"
+        baseFrequency="0.006 0.012" numOctaves="2" seed="3" result="noise"/>
+      <feDisplacementMap id="disp" in="SourceGraphic" in2="noise"
+        scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ============ GOO LAYER ============ -->
+<div class="goo-layer" id="gooLayer"></div>
+
+<!-- ============ CONTENT ============ -->
+<main class="hero">
+  <p class="kicker">McLaren · Formula 1</p>
+  <h1 class="hero-title">
+    Lando
+    <span>Norris</span>
+  </h1>
+  <p class="sub">
+    Move your cursor. The blobs chase and merge like a drop of papaya
+    splitting across glass. Hover the name to make it melt.
+  </p>
+  <div class="num">4</div>
+</main>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+*{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    display:grid;
+    place-items:center;
+    background: radial-gradient(circle at 50% 0%, #171b26 0%, #07080c 70%);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    color:#e7e9ee;
+  }
+
+  /* =========================================================
+     STAGE
+     ========================================================= */
+  .stage{
+    position:relative;
+    width:min(84vw, 820px);
+    aspect-ratio: 3 / 2;
+    border-radius: 18px;
+    overflow: hidden;
+    isolation: isolate;
+    background:#0b0b10;
+    cursor: default;              /* keep the normal arrow cursor */
+    touch-action: none;
+
+    /* cursor position, written by JS — used only by the mask + glow */
+    --mx: 50%;
+    --my: 50%;
+    --r: 180px;
+
+    box-shadow:
+      0 30px 80px -25px rgba(0,0,0,.95),
+      0 0 0 1px rgba(255,255,255,.08);
+    transition: box-shadow .7s cubic-bezier(.22,1,.36,1);
+  }
+  .stage:hover{
+    box-shadow:
+      0 36px 95px -22px rgba(0,0,0,1),
+      0 0 0 1px rgba(255,255,255,.16),
+      0 0 85px -14px rgba(150,185,255,.22);
+  }
+
+  /* =========================================================
+     PICTURE — no scaling, one gentle shift while hovered
+     ========================================================= */
+  .picture{
+    position:absolute;
+    inset:-24px;                  /* bleed room so the shift never shows an edge */
+    background-image: var(--img);
+    background-size: cover;       /* original scale, never changes */
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform: translate3d(0, 0, 0);
+
+    /* the ONLY movement: a slow, smooth shift triggered by hover */
+    transition: transform 1.15s cubic-bezier(.22, 1, .36, 1);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  .stage:hover .picture{
+    transform: translate3d(-7px, -9px, 0);
+  }
+
+  /* =========================================================
+     GRID STRUCTURE FILTER
+     — shows ONLY while the mouse is moving
+     ========================================================= */
+  .lines{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+
+    background-image:
+      linear-gradient(to right,  rgba(255,255,255,.55) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.55) 1px, transparent 1px);
+    background-size: 48px 48px;
+
+    /* the grid only shows near the cursor */
+    -webkit-mask-image: radial-gradient(circle closest-side,
+        #000 0%, rgba(0,0,0,.55) 45%, transparent 100%);
+    mask-image: radial-gradient(circle closest-side,
+        #000 0%, rgba(0,0,0,.55) 45%, transparent 100%);
+    -webkit-mask-size: calc(var(--r) * 2) calc(var(--r) * 2);
+    mask-size: calc(var(--r) * 2) calc(var(--r) * 2);
+    -webkit-mask-position: calc(var(--mx) - var(--r)) calc(var(--my) - var(--r));
+    mask-position: calc(var(--mx) - var(--r)) calc(var(--my) - var(--r));
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    mix-blend-mode: overlay;
+
+    /* default: hidden. Slow fade-out when movement stops. */
+    opacity: 0;
+    transition: opacity .55s cubic-bezier(.22,1,.36,1);
+    will-change: opacity, mask-position;
+  }
+
+  /* while moving → fade in quickly */
+  .stage.moving .lines{
+    opacity: 1;
+    transition: opacity .12s ease-out;
+  }
+
+  /* =========================================================
+     SOFT CURSOR BLOOM — same movement rule
+     ========================================================= */
+  .glow{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity: 0;
+    transition: opacity .55s cubic-bezier(.22,1,.36,1);
+    background: radial-gradient(
+      circle calc(var(--r) * 1.25) at var(--mx) var(--my),
+      rgba(185,212,255,.20), rgba(185,212,255,.05) 45%, transparent 72%);
+    mix-blend-mode: screen;
+    will-change: opacity;
+  }
+  .stage.moving .glow{
+    opacity: 1;
+    transition: opacity .12s ease-out;
+  }
+
+  /* =========================================================
+     VIGNETTE + HINT
+     ========================================================= */
+  .vignette{
+    position:absolute; inset:0; pointer-events:none;
+    box-shadow: inset 0 0 100px 12px rgba(0,0,0,.5);
+    border-radius: inherit;
+  }
+
+  .hint{
+    position:absolute; left:50%; bottom:15px; transform:translateX(-50%);
+    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:rgba(255,255,255,.5);
+    pointer-events:none;
+    transition: opacity .5s ease;
+  }
+  .stage:hover .hint,
+  .stage.moving .hint{ opacity:0; }
+
+  @media (prefers-reduced-motion: reduce){
+    .picture,
+    .stage:hover .picture{ transform: none; transition: none; }
+    .hint{ display:none; }
+  }

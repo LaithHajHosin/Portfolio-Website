@@ -1,0 +1,44 @@
+body { margin: 0; background: #fff; font-family: sans-serif; }
+    
+    /* The tall section that creates the scroll distance */
+    .horizontal-scroll-section {
+        position: relative;
+        height: 300vh; /* Determines how long the horizontal scroll lasts */
+        background: #101400;
+    }
+    
+    /* The sticky wrapper that sticks to the screen */
+    .sticky-wrap {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+    
+    /* The moving track */
+    .horizontal-track {
+        display: flex;
+        gap: 4rem;
+        padding: 0 10vw;
+        will-change: transform;
+    }
+    
+    .h-item {
+        flex: 0 0 400px;
+        height: 60vh;
+        background: #d2ff00;
+        color: #101400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 900;
+        border-radius: 12px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .h-item:nth-child(even) { background: #222; color: #d2ff00; }
+    
+    /* Fillers just to show scrolling before/after */
+    .filler { height: 100vh; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: #fff; color: #000; }

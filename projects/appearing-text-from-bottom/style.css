@@ -1,0 +1,11 @@
+.text-reveal-container { padding: 4rem 2rem; background: #101400; color: white; font-family: sans-serif; text-align: center; }
+    .reveal-text { font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; }
+    
+    /* This is the mask that hides the text */
+    .reveal-word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.1em; margin-right: 0.25em; }
+    
+    /* The text itself, hidden below */
+    .reveal-word span { display: inline-block; transform: translateY(120%); transition: transform 0.8s cubic-bezier(0.65, 0.05, 0, 1); }
+    
+    /* Triggered by JS */
+    .reveal-text.is-visible .reveal-word span { transform: translateY(0); }

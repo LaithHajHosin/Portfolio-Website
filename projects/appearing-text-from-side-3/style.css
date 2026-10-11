@@ -1,0 +1,126 @@
+:root {
+      --papaya: #ff8000;
+      --bg: #050505;
+      --cycle: 7s; /* total loop speed */
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 50% 40%, #1a1a1a 0%, var(--bg) 65%);
+      overflow: hidden;
+    }
+
+    .lando-loader {
+      position: relative;
+      display: inline-block;
+      padding: 0.14em 0.22em;
+      isolation: isolate;
+      filter: drop-shadow(0 0 22px rgba(255, 128, 0, 0.4));
+    }
+
+    /* ---------- SOLID COLORED BLOCK ---------- */
+    .lando-loader__block {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: 0.05em;
+      background: linear-gradient(90deg, #ffb04d 0%, var(--papaya) 55%, #ff6a00 100%);
+      clip-path: inset(0 100% 0 0);
+      animation: blockWipe var(--cycle) cubic-bezier(0.77, 0, 0.18, 1) infinite;
+      will-change: clip-path;
+      pointer-events: none;
+    }
+
+    /* ---------- TEXT ---------- */
+    .lando-loader__text {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      font-family: "Arial Black", "Helvetica Neue", Impact, sans-serif;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.06em;
+      line-height: 0.9;
+      font-size: clamp(3rem, 14vw, 10rem);
+
+      /* white so it reads on papaya AND on the dark bg once the block leaves */
+      color: #ffffff;
+      text-shadow:
+        0 0 12px rgba(255, 255, 255, 0.35),
+        0 0 28px rgba(255, 128, 0, 0.35);
+
+      clip-path: inset(0 100% 0 0);
+      animation: textWipe var(--cycle) cubic-bezier(0.77, 0, 0.18, 1) infinite;
+      will-change: clip-path;
+    }
+
+    /* ---------- GLOWING LOADING LINE ---------- */
+    .lando-loader::before {
+      content: "";
+      position: absolute;
+      top: -0.06em;
+      bottom: -0.06em;
+      left: 0;
+      width: 0.045em;
+      min-width: 2px;
+      background: #fff;
+      border-radius: 999px;
+      box-shadow:
+        0 0 10px #fff,
+        0 0 28px var(--papaya),
+        0 0 60px rgba(255, 128, 0, 0.7);
+      opacity: 0;
+      z-index: 2;
+      pointer-events: none;
+      animation: lineSweep var(--cycle) cubic-bezier(0.77, 0, 0.18, 1) infinite;
+    }
+
+    /* Block: wipe in L→R, hold, then wipe OUT L→R */
+    @keyframes blockWipe {
+      0%   { clip-path: inset(0 100% 0 0); }
+      16%  { clip-path: inset(0 0 0 0); }
+      58%  { clip-path: inset(0 0 0 0); }
+      74%  { clip-path: inset(0 0 0 100%); }
+      100% { clip-path: inset(0 100% 0 0); }
+    }
+
+    /* Text: wipes in L→R over the block, then stays put */
+    @keyframes textWipe {
+      0%, 26% { clip-path: inset(0 100% 0 0); }
+      42%     { clip-path: inset(0 0 0 0); }
+      100%    { clip-path: inset(0 0 0 0); }
+    }
+
+    /* Line: one sweep per swipe (3 total) */
+    @keyframes lineSweep {
+      /* swipe 1 — block reveal */
+      0%   { left: 0%;   opacity: 1; }
+      16%  { left: 100%; opacity: 1; }
+      17%  { opacity: 0; }
+
+      /* swipe 2 — text reveal */
+      25%  { left: 0%;   opacity: 0; }
+      26%  { opacity: 1; }
+      42%  { left: 100%; opacity: 1; }
+      43%  { opacity: 0; }
+
+      /* swipe 3 — block wipe-out */
+      57%  { left: 0%;   opacity: 0; }
+      58%  { opacity: 1; }
+      74%  { left: 100%; opacity: 1; }
+      75%  { opacity: 0; }
+
+      100% { left: 0%;   opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lando-loader__block,
+      .lando-loader__text { animation: none; clip-path: none; }
+      .lando-loader::before { display: none; }
+    }

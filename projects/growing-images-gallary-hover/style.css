@@ -1,0 +1,120 @@
+/* 1. Original Variables & Easing */
+    :root {
+        --cubic-default: cubic-bezier(0.65, 0.05, 0, 1);
+        --duration-default: 0.75s;
+        --animation-default: var(--duration-default) var(--cubic-default);
+        --color--lime: #d2ff00;
+        --color--dark-green: #101400;
+    }
+
+    /* 2. Section Setup */
+    .s.is-callout-socials {
+        background-color: var(--color--dark-green);
+        color: #fff;
+        padding: 6rem 0;
+        text-align: center;
+        font-family: sans-serif;
+        overflow: hidden;
+    }
+    .text-title-lg-mona {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 0.9;
+        margin-bottom: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .span-font-brier {
+        font-family: "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--color--lime);
+    }
+
+    /* 3. The Push Gallery Layout */
+    .callout-socials-card-layout {
+        display: flex;
+        justify-content: center; /* Centers the row */
+        align-items: center;
+        gap: 1rem;
+        height: 500px;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        overflow: hidden; /* Ensures images push off-screen rather than stretching */
+    }
+
+    /* 4. Individual Cards (The Accordion Effect) */
+    .callout-socials-card-w {
+        position: relative;
+        flex: 0 1 120px; /* Default narrow width (sliver) */
+        height: 100%;
+        overflow: hidden;
+        transition: flex-basis var(--animation-default), transform var(--animation-default);
+        cursor: pointer;
+    }
+    .callout-socials-card-w:hover {
+        flex-basis: 450px; /* Expands widely on hover, pushing others away */
+    }
+
+    /* 5. The Curved Mask (Exact Lando SVG Path) */
+    .video-stream {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        
+        /* Using the exact SVG path from the helmet grid for the organic curve */
+        --mask-url: url("data:image/svg+xml,%3Csvg width='407' height='411' viewBox='0 0 407 411' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 .5h390.89a7.5 7.5 0 0 1 7.5 7.5v356.983a7.5 7.5 0 0 1-7.5 7.5H263.329a23.502 23.502 0 0 0-18.375 8.849l-16.499 20.695a22.502 22.502 0 0 1-17.593 8.473H8A7.5 7.5 0 0 1 .5 403V8A7.5 7.5 0 0 1 8 .5Z' fill='black'/%3E%3C/svg%3E");
+        
+        -webkit-mask-image: var(--mask-url);
+        mask-image: var(--mask-url);
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+    }
+    
+    /* 6. Image Styling & Zoom */
+    .image.is-social-card {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--animation-default), filter 0.4s ease;
+        filter: grayscale(40%) brightness(0.7);
+    }
+    .callout-socials-card-w:hover .image.is-social-card {
+        transform: scale(1.05);
+        filter: grayscale(0%) brightness(1);
+    }
+
+    /* 7. Social Links */
+    .callout-socials-links-layout {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5rem;
+        margin-top: 4rem;
+    }
+    .btn-text {
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .btn-text:hover { color: var(--color--lime); }
+
+    /* Responsive adjustments for mobile */
+    @media screen and (max-width: 767px) {
+        .callout-socials-card-w { flex: 0 1 60px; }
+        .callout-socials-card-w:hover { flex-basis: 180px; }
+        .callout-socials-card-layout { height: 350px; padding: 0 1rem; }
+    }

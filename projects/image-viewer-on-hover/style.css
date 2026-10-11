@@ -1,0 +1,27 @@
+.helmet-reveal-container { padding: 4rem; background: #101400; display: flex; gap: 2rem; justify-content: center; }
+    .helmet-card {
+        width: 300px;
+        position: relative;
+        aspect-ratio: 4/5;
+        overflow: hidden;
+        background: #000;
+    }
+    .helmet-card img {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        object-fit: cover;
+    }
+    /* Base image */
+    .helmet-base { transition: transform 0.75s cubic-bezier(0.65, 0.05, 0, 1); }
+    /* Reveal image (starts completely clipped out) */
+    .helmet-reveal {
+        clip-path: ellipse(0% 0% at 50% 100%); /* Starts as a dot at bottom center */
+        transition: clip-path 0.75s cubic-bezier(0.65, 0.05, 0, 1), transform 0.75s cubic-bezier(0.65, 0.05, 0, 1);
+        transform: scale(1.2);
+    }
+    /* On Hover: Reveal the image fully and scale it up */
+    .helmet-card:hover .helmet-reveal {
+        clip-path: ellipse(120% 120% at 50% 50%); /* Expands into view */
+        transform: scale(1);
+    }
+    .helmet-card:hover .helmet-base { transform: scale(1.1); }

@@ -41,10 +41,10 @@ const letterDefinitions = {
         [[w, h/2], [w*0.5, h/2]] 
     ],
     H: (w, h) => [ [[0, 0], [0, h]], [[w, 0], [w, h]], [[0, h/2], [w, h/2]] ],
-    I: (w, h) => [ [[w/2, 0], [w/2, h]] ], // Just a line as requested
+    I: (w, h) => [ [[w/2, 0], [w/2, h]] ],
     J: (w, h) => [ 
-        [[w/2, 0], [w/2, h*0.7]], // Vertical line down
-        bezierPoints([w/2, h*0.7], [w/2, h], [0, h], [0, h*0.7], 15) // Bottom hook
+        [[w/2, 0], [w/2, h*0.7]],
+        bezierPoints([w/2, h*0.7], [w/2, h], [0, h], [0, h*0.7], 15)
     ],
     K: (w, h) => [ [[0, 0], [0, h]], [[0, h*0.5], [w, 0]], [[0, h*0.5], [w, h]] ],
     L: (w, h) => [ [[0, 0], [0, h]], [[0, h], [w, h]] ],
@@ -64,9 +64,30 @@ const letterDefinitions = {
         bezierPoints([0,0], [w, 0], [w, h*0.5], [0, h*0.5]),
         [[0, h*0.5], [w, h]] 
     ],
-    S: (w, h) => [ 
-        bezierPoints([w, h*0.3], [w, 0], [0, 0], [w/2, h/2], 20), // Top curve
-        bezierPoints([w/2, h/2], [w, h], [0, h], [0, h*0.7], 20)  // Bottom curve
+    // ★ Sharper, proportional S — tighter footprint, angular curves,
+    //   endpoints aligned with the visual style of C, G, O
+    S: (w, h) => [
+        bezierPoints(
+            [w * 0.88, h * 0.18],
+            [w * 0.55, h * 0.00],
+            [w * 0.12, h * 0.22],
+            [w * 0.12, h * 0.42],
+            20
+        ),
+        bezierPoints(
+            [w * 0.12, h * 0.42],
+            [w * 0.12, h * 0.58],
+            [w * 0.88, h * 0.42],
+            [w * 0.88, h * 0.58],
+            20
+        ),
+        bezierPoints(
+            [w * 0.88, h * 0.58],
+            [w * 0.88, h * 0.78],
+            [w * 0.45, h],
+            [w * 0.12, h * 0.82],
+            20
+        )
     ],
     T: (w, h) => [ [[0, 0], [w, 0]], [[w/2, 0], [w/2, h]] ],
     U: (w, h) => [ 
