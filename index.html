@@ -1222,10 +1222,207 @@
             100% { left: 0%;   opacity: 0; }
         }
 
+        /* ==========================================
+           HERO TEXT LANDO WIPE-IN
+           ========================================== */
+        .hero-wipe {
+            --hero-cycle: 2.6s;
+            position: relative;
+            display: inline-block;
+            isolation: isolate;
+            line-height: 1.1;
+        }
+
+        .hero-wipe__text {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            clip-path: inset(0 100% 0 0);
+            will-change: clip-path;
+        }
+
+        .hero-wipe__block {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            border-radius: 0.08em;
+            background: linear-gradient(90deg, #ffb04d 0%, #f97316 55%, #ea580c 100%);
+            clip-path: inset(0 100% 0 0);
+            will-change: clip-path;
+            pointer-events: none;
+        }
+
+        .hero-wipe::before {
+            content: "";
+            position: absolute;
+            top: -0.04em;
+            bottom: -0.04em;
+            left: 0;
+            width: 3px;
+            min-width: 2px;
+            background: #fff;
+            border-radius: 999px;
+            box-shadow:
+                0 0 10px #fff,
+                0 0 24px #f97316,
+                0 0 50px rgba(249, 115, 22, 0.65);
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .hero-wipe.play .hero-wipe__text {
+            animation: heroTextWipe var(--hero-cycle) cubic-bezier(0.77, 0, 0.18, 1) 0s forwards;
+        }
+        .hero-wipe.play .hero-wipe__block {
+            animation: heroBlockWipe var(--hero-cycle) cubic-bezier(0.77, 0, 0.18, 1) 0s forwards;
+        }
+        .hero-wipe.play::before {
+            animation: heroLineSweep var(--hero-cycle) cubic-bezier(0.77, 0, 0.18, 1) 0s forwards;
+        }
+
+        @keyframes heroBlockWipe {
+            0%   { clip-path: inset(0 100% 0 0); }
+            16%  { clip-path: inset(0 0 0 0); }
+            58%  { clip-path: inset(0 0 0 0); }
+            74%  { clip-path: inset(0 0 0 100%); }
+            100% { clip-path: inset(0 0 0 100%); }
+        }
+
+        @keyframes heroTextWipe {
+            0%, 26% { clip-path: inset(0 100% 0 0); }
+            42%     { clip-path: inset(0 0 0 0); }
+            100%    { clip-path: inset(0 0 0 0); }
+        }
+
+        @keyframes heroLineSweep {
+            0%   { left: 0%;   opacity: 1; }
+            16%  { left: 100%; opacity: 1; }
+            17%  { opacity: 0; }
+            25%  { left: 0%;   opacity: 0; }
+            26%  { opacity: 1; }
+            42%  { left: 100%; opacity: 1; }
+            43%  { opacity: 0; }
+            57%  { left: 0%;   opacity: 0; }
+            58%  { opacity: 1; }
+            74%  { left: 100%; opacity: 1; }
+            75%  { opacity: 0; }
+            100% { left: 0%;   opacity: 0; }
+        }
+
+        /* ==========================================
+           UNIVERSAL LANDO WIPE — applied site-wide via JS
+           ========================================== */
+        .wipe {
+            --wipe-cycle: 1.6s;
+            --wipe-delay: 0s;
+            --wipe-pad-x: 0.18em;
+            --wipe-pad-y: 0.1em;
+            --wipe-block: linear-gradient(90deg, #ffb04d 0%, #f97316 55%, #ea580c 100%);
+            --wipe-line: #ffffff;
+            --wipe-glow: #f97316;
+            position: relative;
+            display: inline-block;
+            isolation: isolate;
+            max-width: 100%;
+        }
+
+        .wipe__text {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            clip-path: inset(0 100% 0 0);
+            will-change: clip-path;
+        }
+
+        .wipe__block {
+            position: absolute;
+            top: calc(var(--wipe-pad-y) * -1);
+            bottom: calc(var(--wipe-pad-y) * -1);
+            left: calc(var(--wipe-pad-x) * -1);
+            right: calc(var(--wipe-pad-x) * -1);
+            z-index: 0;
+            border-radius: 0.12em;
+            background: var(--wipe-block);
+            clip-path: inset(0 100% 0 0);
+            will-change: clip-path;
+            pointer-events: none;
+        }
+
+        .wipe::before {
+            content: "";
+            position: absolute;
+            top: calc(var(--wipe-pad-y) * -1.8);
+            bottom: calc(var(--wipe-pad-y) * -1.8);
+            left: 0;
+            width: 3px;
+            margin-left: -1.5px;
+            border-radius: 999px;
+            background: var(--wipe-line);
+            box-shadow:
+                0 0 10px var(--wipe-line),
+                0 0 24px var(--wipe-glow),
+                0 0 50px var(--wipe-glow);
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Dark variant — used on orange / accent-coloured text */
+        .wipe--dark {
+            --wipe-block: linear-gradient(90deg, #3f3f46 0%, #27272a 55%, #18181b 100%);
+            --wipe-glow: #fb923c;
+        }
+
+        .wipe.play .wipe__text {
+            animation: wipeTextIn var(--wipe-cycle) cubic-bezier(0.77, 0, 0.18, 1) var(--wipe-delay) both;
+        }
+        .wipe.play .wipe__block {
+            animation: wipeBlockIn var(--wipe-cycle) cubic-bezier(0.77, 0, 0.18, 1) var(--wipe-delay) both;
+        }
+        .wipe.play::before {
+            animation: wipeLineIn var(--wipe-cycle) cubic-bezier(0.77, 0, 0.18, 1) var(--wipe-delay) both;
+        }
+
+        @keyframes wipeBlockIn {
+            0%   { clip-path: inset(0 100% 0 0); }
+            16%  { clip-path: inset(0 0 0 0); }
+            58%  { clip-path: inset(0 0 0 0); }
+            74%  { clip-path: inset(0 0 0 100%); }
+            100% { clip-path: inset(0 0 0 100%); }
+        }
+
+        @keyframes wipeTextIn {
+            0%, 26% { clip-path: inset(0 100% 0 0); }
+            42%     { clip-path: inset(0 0 0 0); }
+            100%    { clip-path: inset(0 0 0 0); }
+        }
+
+        @keyframes wipeLineIn {
+            0%   { left: 0%;   opacity: 1; }
+            16%  { left: 100%; opacity: 1; }
+            17%  { opacity: 0; }
+            25%  { left: 0%;   opacity: 0; }
+            26%  { opacity: 1; }
+            42%  { left: 100%; opacity: 1; }
+            43%  { opacity: 0; }
+            57%  { left: 0%;   opacity: 0; }
+            58%  { opacity: 1; }
+            74%  { left: 100%; opacity: 1; }
+            75%  { opacity: 0; }
+            100% { left: 0%;   opacity: 0; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             #preloader .lando-loader__block, #preloader .lando-loader__text { animation: none; clip-path: none; }
             #preloader .lando-loader::before { display: none; }
             .char-btn .btn-text .char { transition: none; }
+            .hero-wipe__text { animation: none !important; clip-path: none !important; }
+            .hero-wipe__block { display: none; }
+            .hero-wipe::before { display: none; }
+            .wipe__text { clip-path: none !important; animation: none !important; }
+            .wipe__block { display: none !important; }
+            .wipe::before { display: none !important; }
         }
     </style>
 </head>
@@ -1319,7 +1516,10 @@
                     </div>
 
                     <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1]">
-                        Engineering <span class="flare-text">digital flare</span> into products.
+                        <span class="hero-wipe">
+                            <span class="hero-wipe__block" aria-hidden="true"></span>
+                            <span class="hero-wipe__text">Engineering <span class="flare-text">digital flare</span> into products.</span>
+                        </span>
                     </h1>
 
                     <p class="text-zinc-400 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
@@ -1449,7 +1649,6 @@
     <section id="projects" class="py-12 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up visible">
-                <span class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-2 block">Portfolio Showcase</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Featured Projects</h2>
                 <div class="w-16 h-1 flare-gradient mx-auto mt-3 rounded-full"></div>
                 <p class="text-zinc-400 mt-4 text-sm sm:text-base">Each project includes direct <span class="text-orange-400 font-mono">Source Code</span> and <span class="text-orange-400 font-mono">Live Demo</span> buttons.</p>
@@ -1528,7 +1727,6 @@
     <section id="about" class="py-24 relative bg-zinc-900/30 border-t border-zinc-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
-                <span class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-2 block">System Overview</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white">About Me</h2>
                 <div class="w-16 h-1 flare-gradient mx-auto mt-3 rounded-full"></div>
             </div>
@@ -1584,7 +1782,6 @@
     <section id="skills" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
-                <span class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-2 block">Technical Arsenal</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Proficiencies</h2>
                 <div class="w-16 h-1 flare-gradient mx-auto mt-3 rounded-full"></div>
             </div>
@@ -1668,7 +1865,6 @@
     <section id="creative" class="py-24 relative bg-zinc-900/30 border-t border-zinc-900">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12 fade-in-up">
-                <span class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-2 block">Creative Coding</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Generative Canvas</h2>
                 <div class="w-16 h-1 flare-gradient mx-auto mt-3 rounded-full"></div>
                 <p class="text-zinc-400 mt-4 text-sm sm:text-base">Type your name or any word and watch it draw itself with pure JavaScript and HTML5 Canvas.</p>
@@ -1690,8 +1886,7 @@
     <section id="experience" class="py-24 relative bg-zinc-900/30 border-t border-zinc-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
-                <span class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-2 block">Career & Education</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">History</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Career & Education</h2>
                 <div class="w-16 h-1 flare-gradient mx-auto mt-3 rounded-full"></div>
                 <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
                     <a href="assets/docs/Laith-HH-CV.pdf" download class="ghost-btn !py-3 !px-6 !text-sm">
@@ -1773,7 +1968,6 @@
     <section id="contact" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
-                <span class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-2 block">Get In Touch</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Work Together</h2>
                 <div class="w-16 h-1 flare-gradient mx-auto mt-3 rounded-full"></div>
                 <p class="text-zinc-400 mt-4 text-sm sm:text-base">Have a project in mind or want to discuss potential opportunities? Send me a message!</p>
@@ -1944,18 +2138,28 @@
         });
 
         // ==========================================
-        // PRELOADER
+        // PRELOADER + HERO WIPE TRIGGER
         // ==========================================
         (function () {
             const preloader = document.getElementById('preloader');
-            if (!preloader) return;
+            const heroWipe = document.querySelector('.hero-wipe');
+
+            function fireHeroWipe() {
+                if (heroWipe) heroWipe.classList.add('play');
+            }
+
+            if (!preloader) { fireHeroWipe(); return; }
+
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if (prefersReducedMotion) {
                 preloader.classList.add('loaded');
+                fireHeroWipe();
                 return;
             }
+
             setTimeout(() => {
                 preloader.classList.add('loaded');
+                fireHeroWipe();
                 setTimeout(() => {
                     if (preloader && preloader.parentNode) preloader.parentNode.removeChild(preloader);
                 }, 900);
@@ -1978,6 +2182,69 @@
                     el.appendChild(span);
                 });
             });
+        })();
+
+        // ==========================================
+        // UNIVERSAL LANDO WIPE — site-wide headings
+        // ==========================================
+        (function () {
+            'use strict';
+
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) return;
+
+            // [selector, darkVariant, cycleDuration]
+            const TARGETS = [
+                { sel: 'section h2', dark: false, cycle: '1.75s' },              // big section titles
+                { sel: 'span.text-orange-400.tracking-widest.uppercase', dark: true, cycle: '1.30s' }, // eyebrow labels
+                { sel: '#about h3', dark: false, cycle: '1.60s' },               // about intro heading
+                { sel: '#skills h3, #experience h3, #contact h4', dark: false, cycle: '1.25s' } // card titles
+            ];
+
+            const queue = [];
+
+            TARGETS.forEach(cfg => {
+                let nodes;
+                try { nodes = document.querySelectorAll(cfg.sel); } catch (e) { return; }
+
+                nodes.forEach((el, i) => {
+                    if (!el || el.dataset.wipeReady === '1') return;
+                    if (el.closest('#hero')) return;
+
+                    const inner = el.innerHTML;
+
+                    el.classList.add('wipe');
+                    if (cfg.dark) el.classList.add('wipe--dark');
+                    el.classList.remove('block'); // let inline-block hug the text
+                    el.style.setProperty('--wipe-cycle', cfg.cycle);
+                    el.style.setProperty('--wipe-delay', (0.25 + Math.min(i, 4) * 0.07).toFixed(2) + 's');
+
+                    el.innerHTML =
+                        '<span class="wipe__block" aria-hidden="true"></span>' +
+                        '<span class="wipe__text">' + inner + '</span>';
+
+                    el.dataset.wipeReady = '1';
+                    queue.push(el);
+                });
+            });
+
+            if (!queue.length) return;
+
+            // Fallback for very old browsers
+            if (!('IntersectionObserver' in window)) {
+                queue.forEach(el => el.classList.add('play'));
+                return;
+            }
+
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('play');
+                    obs.unobserve(entry.target);
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+            queue.forEach(el => io.observe(el));
         })();
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -2241,7 +2508,7 @@
                                 <div class="flex flex-wrap gap-2 mb-4">
                                     ${project.tags.map(t => `<span class="px-2 py-0.5 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs">${t}</span>`).join('')}
                                 </div>
-                                <a href="${project.url}" target="_blank" rel="noopener" class="project-action-btn w-full text-center block px-3 py-2.5 rounded-xl flare-gradient text-white font-semibold text-sm shadow-md shadow-orange-500/20 hover:shadow-orange-500/40 transition-all">
+                                <a href="${project.url}" rel="noopener" class="project-action-btn w-full text-center block px-3 py-2.5 rounded-xl flare-gradient text-white font-semibold text-sm shadow-md shadow-orange-500/20 hover:shadow-orange-500/40 transition-all">
                                     <i class="fa-solid fa-arrow-up-right-from-square mr-1.5 text-xs"></i> Live Demo
                                 </a>
                             </div>
